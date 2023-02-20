@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  host: <%= ENV['DATABASE_HOST'] || 'localhost' %>
+  pool: <%= ENV['DB_POOL'] || 5 %>
+
+development:
+  <<: *default
+  database: minesweeper_development
+  user: <%= ENV['DATABASE_USER'] || 'postgres' %>
+  password: <%= ENV['DATABASE_PASSWORD'] || 'postgres' %>
+
+test:
+  <<: *default
+  database: minesweeper_test
+  user: <%= ENV['DATABASE_USER'] || 'postgres' %>
+  password: <%= ENV['DATABASE_PASSWORD'] || 'postgres' %>
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>

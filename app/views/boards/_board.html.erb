@@ -1,0 +1,43 @@
+<div id="<%= dom_id board %>">
+  <p>
+    <strong>Name:</strong>
+    <%= board.name %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= board.email %>
+  </p>
+
+  <p>
+    <strong>Height:</strong>
+    <%= board.height %>
+  </p>
+
+  <p>
+    <strong>Width:</strong>
+    <%= board.width %>
+  </p>
+
+  <p>
+    <strong>Number of Mine:</strong>
+    <%= board.number_of_mine %>
+  </p>
+
+  <p>
+    <div class="container">
+      <% board.data.each do |row| %>
+        <div class="row">
+          <% row.each do |col| %>
+            <div class="box">
+              <% if col == 1 %>
+                <i class="fa fa-bomb"></i>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </p>
+
+</div>

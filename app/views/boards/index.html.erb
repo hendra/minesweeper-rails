@@ -1,0 +1,40 @@
+<h1>Boards</h1>
+
+<% if params[:view] == 'all' %>
+  <div id="boards">
+    <% @boards.each do |board| %>
+      <%= render board %>
+    <% end %>
+  </div>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Updated At</th>
+        <th scope="col" colspan="2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @boards.each do |board| %>
+      <tr>
+        <th scope="row"><%= board.id %></th>
+        <td><%= link_to board.name, board %></td>
+        <td><%= board.email %></td>
+        <td><%= board.created_at.strftime("%a, %d %b %Y %H:%M:%S") %></td>
+        <td><%= board.updated_at.strftime("%a, %d %b %Y %H:%M:%S") %></td>
+        <td><%= link_to "Edit", edit_board_path(board) %></td>
+        <td><%= link_to 'Delete', board, data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @boards, theme: 'bootstrap-5' %>
+
+  <%= link_to "Generate Board", new_board_path, class: 'btn btn-outline-primary' %>
+  <%= link_to "View All Boards", boards_path(view: 'all'), class: 'btn btn-outline-primary' %>
+<% end %>

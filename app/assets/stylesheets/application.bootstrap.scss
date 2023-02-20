@@ -1,0 +1,15 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+@import "@fortawesome/fontawesome-free/css/all";
+
+.box {
+  @extend .col;
+  @extend .border;
+  @extend .d-flex;
+  @extend .align-items-center;
+  @extend .justify-content-center;
+
+  width: 50px;
+  height: 100px;
+  border: 1px;
+}
